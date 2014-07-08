@@ -1,6 +1,6 @@
 {
-  "name": "chat",
-  "version": "0.0.0",
+  "name": "cubechat",
+  "version": "0.0.2",
   "dependencies": {
     "express": "~3.4.3",
     "lodash": "~2.4.1",
