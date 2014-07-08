@@ -29,7 +29,7 @@ angular.module('chatApp', [
       .otherwise({
         redirectTo: '/'
       });
-      
+
     $locationProvider.html5Mode(true);
 
     // Intercept 401s and redirect you to login

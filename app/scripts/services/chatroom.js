@@ -20,7 +20,7 @@ angular.module('chatApp')
     // if unauthorized, reset messages and redirect to login
     mySocket.on('unauthorized', function (data) {
       messages = data.messages;
-      $location.path('/login');
+      $location.path('/signup');
     });
 
     // update chatroom data
