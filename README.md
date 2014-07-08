@@ -9,5 +9,5 @@ Tools Used AngularJS Node.js (server) Express (framework) MongoDB (database) Yeo
 
 ## License
 
-MIT
-Credit goes to DaftMonk for creating foundation of this app
+MIT,
+Credit goes to Tyler Henkel (DaftMonk) for creating Angular Seed project, which serves as the foundation of this app
