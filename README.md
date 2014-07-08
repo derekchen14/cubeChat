@@ -1,19 +1,13 @@
-# MEAN Chat Demo
+# MEAN Stack chat application using Websockets
 
-A simple Socket.IO chat application built on a MEAN stack with help from the Yeoman [Angular Fullstack](https://github.com/DaftMonk/generator-angular-fullstack) Generator.
+Tools Used AngularJS Node.js (server) Express (framework) MongoDB (database) Yeoman (scaffolding) Grunt (build tool) Bower (package manager) Git (version control)
 
 ## Live demo
 
-[http://mean-chat.herokuapp.com/](http://mean-chat.herokuapp.com/)
+[http://cubechat.herokuapp.com/](http://cubechat.herokuapp.com/)
 
-## Setup
-
-Run `npm install`, followed by `bower install` to grab the dependencies.
-
-## Running the app
-
-Run `grunt:serve` to start the app in development mode, or run `grunt server:dist` to run it in production mode.
 
 ## License
 
 MIT
+Credit goes to DaftMonk for creating foundation of this app
