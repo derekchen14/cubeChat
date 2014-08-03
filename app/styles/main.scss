@@ -71,7 +71,6 @@ LAYOUT
     -o-text-rendering: optimizeLegibility;
     text-rendering: optimizeLegibility;
   }
-
   .chat {
     width: 70%;
   }
@@ -99,26 +98,28 @@ LAYOUT
       list-style: none;
     }
     li {
-      padding: 15px 0 15px;
+      padding: 12px 0 10px;
       border-bottom: 1px solid #eee;
       @include clearfix();
     }
     .message {
       float: left;
-      width: 80%;
     }
     .author {
-      font-weight: bold;
+      // font-weight: bold;
       margin-bottom: 5px;
       float:left;
     }
     .date {
-      float: left;
-      margin-left: 15px;
+      margin-left: 5px;
+      font-size: 0.9em;
+      &::before { content: "("; }
+      &::after { content: ")"; }
     }
     .body {
       clear: both;
-      word-break:break-all;
+      font-weight: bold;
+      // word-break:break-all;
     }
   }
 
@@ -135,6 +136,7 @@ LAYOUT
     bottom: 0;
     right: 0;
     overflow: auto;
+    text-align: center;
     ul {
       padding: 0;
       margin: 15px 0 30px 25px;

@@ -7,12 +7,11 @@ angular.module('chatApp')
     $cookieStore.remove('user');
 
     return {
-      /**
-       * Authenticate user
-       * 
+      /* Authenticate user
+       *
        * @param  {Object}   user     - login info
        * @param  {Function} callback - optional
-       * @return {Promise}            
+       * @return {Promise}
        */
       login: function(user, callback) {
         var cb = callback || angular.noop;
@@ -28,11 +27,10 @@ angular.module('chatApp')
         }).$promise;
       },
 
-      /**
-       * Unauthenticate user
-       * 
+      /**Unauthenticate user
+       *
        * @param  {Function} callback - optional
-       * @return {Promise}           
+       * @return {Promise}
        */
       logout: function(callback) {
         var cb = callback || angular.noop;
@@ -46,12 +44,11 @@ angular.module('chatApp')
           }).$promise;
       },
 
-      /**
-       * Create a new user
-       * 
+      /** Create a new user
+       *
        * @param  {Object}   user     - user info
        * @param  {Function} callback - optional
-       * @return {Promise}            
+       * @return {Promise}
        */
       createUser: function(user, callback) {
         var cb = callback || angular.noop;
@@ -66,13 +63,12 @@ angular.module('chatApp')
           }).$promise;
       },
 
-      /**
-       * Change password
-       * 
-       * @param  {String}   oldPassword 
-       * @param  {String}   newPassword 
+      /** Change password
+       *
+       * @param  {String}   oldPassword
+       * @param  {String}   newPassword
        * @param  {Function} callback    - optional
-       * @return {Promise}              
+       * @return {Promise}
        */
       changePassword: function(oldPassword, newPassword, callback) {
         var cb = callback || angular.noop;
@@ -87,18 +83,14 @@ angular.module('chatApp')
         }).$promise;
       },
 
-      /**
-       * Gets all available info on authenticated user
-       * 
+      /**Gets all available info on authenticated user
        * @return {Object} user
        */
       currentUser: function() {
         return User.get();
       },
 
-      /**
-       * Simple check to see if a user is logged in
-       * 
+      /** Simple check to see if a user is logged in
        * @return {Boolean}
        */
       isLoggedIn: function() {

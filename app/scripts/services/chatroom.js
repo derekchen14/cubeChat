@@ -17,7 +17,7 @@ angular.module('chatApp')
       $rootScope.currentUser = data.user;
     });
 
-    // if unauthorized, reset messages and redirect to login
+    // if unauthorized, reset messages and redirect to sign-up
     mySocket.on('unauthorized', function (data) {
       messages = data.messages;
       $location.path('/signup');

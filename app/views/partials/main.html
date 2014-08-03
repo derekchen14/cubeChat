@@ -1,15 +1,16 @@
 <section class="chat-app">
-  <div ng-include="'partials/navbar'"></div>
+  <!-- <div ng-include="'partials/navbar'"></div> -->
+  <h1>Cube Chat</h1>
   <div class="main">
     <div class="chat">
       <section auto-scroll="event:scroll">
         <ul>
           <li ng-repeat="message in getMessages()">
-            <img class="author-profile" ng-src="{{ message.author.profileImg }}">
+            <!-- <img class="author-profile" ng-src="{{ message.author.profileImg }}"> -->
             <div class="message">
-              <div class="author" ng-class="{'me':currentUser.name == message.author.name}">{{ message.author.name }}</div>
-              <div class="date">{{ message.date | date: 'h:mm' }}</div>
-              <div class="body">{{ message.body }}</div>
+              <span class="author" ng-class="{'me':currentUser.name == message.author.name}">{{ message.author.name }}</span>
+              <span class="date">{{message.date | date: 'h:mm'}}</span>:
+              <span class="body">{{ message.body }}</span>
             </div>
           </li>
         </ul>
@@ -21,6 +22,7 @@
       </footer>
     </div>
     <aside>
+      <h3 style="text-decoration: underline;">Users</h3>
       <ul>
         <li ng-repeat="visitor in getVisitors()">
           <img class="author-profile" ng-src="{{ visitor.profileImg }}">
