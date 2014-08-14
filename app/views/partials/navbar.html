@@ -1,7 +1,0 @@
-<header ng-controller="NavbarCtrl">
-  <a href="/">Chat</a>
-  <a href="/login" ng-hide="Auth.isLoggedIn()">Login</a>
-  <a href="/signup" ng-hide="Auth.isLoggedIn()">Sign up</a>
-  <a href="/settings" ng-show="Auth.isLoggedIn()">Settings</a>
-  <a href="" ng-click="logout()" ng-show="Auth.isLoggedIn()">Logout</a>
-</header>

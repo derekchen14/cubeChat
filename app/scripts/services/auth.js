@@ -1,34 +1,31 @@
 'use strict';
 
 angular.module('chatApp')
-  .factory('Auth', function Auth($location, $rootScope, Session, User, $cookieStore) {
+  .factory('Auth', function Auth($location, $rootScope, User, $cookieStore) {
     // Get currentUser from cookie
     $rootScope.currentUser = $cookieStore.get('user') || null;
     $cookieStore.remove('user');
 
     return {
-      /* Authenticate user
-       *
+      /** Authenticate user
        * @param  {Object}   user     - login info
        * @param  {Function} callback - optional
-       * @return {Promise}
-       */
+       * @return {Promise} */
       login: function(user, callback) {
         var cb = callback || angular.noop;
 
-        return Session.save({
-          email: user.email,
-          password: user.password
-        }, function(user) {
-          $rootScope.currentUser = user;
-          return cb();
-        }, function(err) {
-          return cb(err);
-        }).$promise;
+        return cb;
+        // return Session.save({
+        //   email: user.email,
+        //   password: user.password
+        // }, function(user) {
+        //   $rootScope.currentUser = user;
+        //   return cb();
+        // }, function(err) {
+        //   return cb(err);
+        // }).$promise;
       },
-
       /**Unauthenticate user
-       *
        * @param  {Function} callback - optional
        * @return {Promise}
        */
@@ -36,18 +33,17 @@ angular.module('chatApp')
         var cb = callback || angular.noop;
 
         $rootScope.currentUser = null;
-        return Session.delete(function() {
-            return cb();
-          },
-          function(err) {
-            return cb(err);
-          }).$promise;
+        return cb;
+        // return Session.delete(function() {
+        //     return cb();
+        //   },
+        //   function(err) {
+        //     return cb(err);
+        //   }).$promise;
       },
-
-      /** Create a new user
-       *
+      /** Add createdAt, active flag and profile image
        * @param  {Object}   user     - user info
-       * @param  {Function} callback - optional
+       * @param  {Function} callback - optional,
        * @return {Promise}
        */
       createUser: function(user, callback) {
@@ -62,14 +58,11 @@ angular.module('chatApp')
             return cb(err);
           }).$promise;
       },
-
-      /** Change password
-       *
+      /** Change password *
        * @param  {String}   oldPassword
        * @param  {String}   newPassword
        * @param  {Function} callback    - optional
-       * @return {Promise}
-       */
+       * @return {Promise} */
       changePassword: function(oldPassword, newPassword, callback) {
         var cb = callback || angular.noop;
 
@@ -84,15 +77,13 @@ angular.module('chatApp')
       },
 
       /**Gets all available info on authenticated user
-       * @return {Object} user
-       */
+       * @return {Object} user */
       currentUser: function() {
         return User.get();
       },
 
       /** Simple check to see if a user is logged in
-       * @return {Boolean}
-       */
+       * @return {Boolean} */
       isLoggedIn: function() {
         if($rootScope.currentUser) {
           return $rootScope.currentUser.role !== 'guest';

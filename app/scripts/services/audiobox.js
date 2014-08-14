@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chatApp')
-  .factory('chatroom', function (mySocket, $rootScope, $timeout, $location) {
+  .factory('AudioBox', function (MySocket, $rootScope, $timeout, $location) {
     var messages = [];
     var visitors = [];
 
@@ -13,36 +13,36 @@ angular.module('chatApp')
     };
 
     // set currentUser to socket user
-    mySocket.on('init', function (data) {
+    MySocket.on('init', function (data) {
       $rootScope.currentUser = data.user;
     });
 
     // if unauthorized, reset messages and redirect to sign-up
-    mySocket.on('unauthorized', function (data) {
+    MySocket.on('unauthorized', function (data) {
       messages = data.messages;
       $location.path('/signup');
     });
 
     // update chatroom data
-    mySocket.on('join', function (data) {
+    MySocket.on('join', function (data) {
       visitors = data.visitors;
       messages = data.messages;
       scrollToBottom();
     });
 
     // update visitors
-    mySocket.on('leave', function (data) {
+    MySocket.on('leave', function (data) {
       visitors = data.visitors;
 
       // if user closed connection somewhere else
       // reconnect to see if he's still logged in
       if(data.user._id === $rootScope.currentUser._id) {
-        mySocket.reconnect();
+        MySocket.reconnect();
       }
     });
 
     // update messages and scroll to bottom
-    mySocket.on('message', function (messageQueue) {
+    MySocket.on('message', function (messageQueue) {
       messages = messageQueue;
       scrollToBottom();
     });
@@ -56,7 +56,7 @@ angular.module('chatApp')
         return visitors;
       },
       sendMessage: function(message) {
-        mySocket.emit( 'message', { body: message } );
+        MySocket.emit( 'message', { body: message } );
         // push message locally
         messages.push( { body: message, author: $rootScope.currentUser, date: Date.now() });
         scrollToBottom();

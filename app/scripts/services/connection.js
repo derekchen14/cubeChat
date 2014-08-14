@@ -1,8 +1,11 @@
 /* global io */
 'use strict';
 
+// for making WebRTC connections
+
 angular.module('chatApp')
-  .factory('mySocket', function(socketFactory) {
+  .factory('Connection', function(socketFactory) {
+
     var socket = io.connect();
 
     var wrappedSocket = socketFactory({

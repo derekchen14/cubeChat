@@ -10,21 +10,26 @@ angular.module('chatApp', [
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'partials/main',
-        controller: 'MainCtrl'
+        templateUrl: 'partials/home',
       })
-      .when('/login', {
-        templateUrl: 'partials/login',
-        controller: 'LoginCtrl'
+      .when('/about', {
+        templateUrl: 'partials/about',
       })
-      .when('/signup', {
-        templateUrl: 'partials/signup',
-        controller: 'SignupCtrl'
+      .when('/tech', {
+        templateUrl: 'partials/tech',
       })
-      .when('/settings', {
-        templateUrl: 'partials/settings',
-        controller: 'SettingsCtrl',
-        authenticate: true
+      .when('/name', {
+        templateUrl: 'partials/name',
+        controller: 'NameCtrl'
+      })
+      .when('/chat', {
+        templateUrl: 'partials/chat',
+        controller: 'ChatCtrl'
+      })
+      .when('/video', {
+        templateUrl: 'partials/video',
+        controller: 'VideoCtrl',
+        // authenticate: true
       })
       .otherwise({
         redirectTo: '/'
@@ -37,7 +42,7 @@ angular.module('chatApp', [
       return {
         'responseError': function(response) {
           if(response.status === 401) {
-            $location.path('/login');
+            $location.path('/name');
             return $q.reject(response);
           }
           else {
@@ -52,7 +57,7 @@ angular.module('chatApp', [
     $rootScope.$on('$routeChangeStart', function (event, next) {
 
       if (next.authenticate && !Auth.isLoggedIn()) {
-        $location.path('/login');
+        $location.path('/name');
       }
     });
   });

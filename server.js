@@ -25,7 +25,7 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 });
 
 // Passport Configuration
-var passport = require('./lib/config/passport');
+// var passport = require('./lib/config/passport');
 
 var app = express(),
     server = require('http').createServer(app),
@@ -36,7 +36,7 @@ var expressConfig = require('./lib/config/express');
 expressConfig.init(app);
 
 // Socket.io configuration
-require('./lib/config/socket')(io, app, passport, expressConfig);
+require('./lib/config/socket')(io, app, expressConfig); //passport
 
 // Routing
 require('./lib/routes')(app);

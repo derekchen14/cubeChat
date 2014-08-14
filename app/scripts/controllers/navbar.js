@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('chatApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth, mySocket) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth, MySocket) {
     $scope.logout = function() {
       Auth.logout()
         .then(function() {
           // Reconnect to socket as guest
-          mySocket.reconnect();
+          MySocket.reconnect();
 
           $location.path('/login');
         });

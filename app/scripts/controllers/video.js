@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chatApp')
-  .controller('MainCtrl', function ($scope, chatroom) {
+  .controller('VideoCtrl', function ($scope, chatroom) {
     $scope.getMessages = chatroom.getMessages;
     $scope.getVisitors = chatroom.getVisitors;
 
