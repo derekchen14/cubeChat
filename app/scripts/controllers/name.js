@@ -9,7 +9,7 @@ angular.module('chatApp')
       $scope.submitted = true;
 
       if(form.$valid) {
-        Auth.createUser({
+        Auth.checkUser({
           name: $scope.user.username,
           // profileImg: $scope.user.profile_img,
           // messages: [
@@ -18,11 +18,11 @@ angular.module('chatApp')
           //   {msg: 'yellow', time: Date.now()}
           // ],
           createdAt: Date.now(),
-          active: true
+          isActive: true
         })
         .then( function() {
           MySocket.reconnect();
-          $location.path('/chat');
+          $location.path('/name');
         })
         .catch( function(err) {
           err = err.data;

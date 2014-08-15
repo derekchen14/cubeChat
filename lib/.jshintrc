@@ -9,5 +9,7 @@
   "noarg": true,
   "regexp": true,
   "undef": true,
-  "smarttabs": true
+  "smarttabs": true,
+  "laxcomma": true,
+  "quotmark": false
 }

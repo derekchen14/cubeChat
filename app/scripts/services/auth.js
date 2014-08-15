@@ -6,64 +6,54 @@ angular.module('chatApp')
     $rootScope.currentUser = $cookieStore.get('user') || null;
     $cookieStore.remove('user');
 
+    var login = function(user) {
+      user.isActive = true;
+      return User.save(user, function(mongoUser) {
+        $rootScope.currentUser = mongoUser;
+        return mongoUser;
+      });
+    };
+    var createUser = function(user) {
+      console.log('runs?', user);
+      return User.save(user, function(user) {
+        $rootScope.currentUser = user;
+        console.log('Got all the way to created: ',user);
+        return user;
+      },
+      function(err) {
+        console.log('error!!: ',err);
+        return err;
+      });
+    };
+
     return {
-      /** Authenticate user
-       * @param  {Object}   user     - login info
-       * @param  {Function} callback - optional
-       * @return {Promise} */
-      login: function(user, callback) {
-        var cb = callback || angular.noop;
-
-        return cb;
-        // return Session.save({
-        //   email: user.email,
-        //   password: user.password
-        // }, function(user) {
-        //   $rootScope.currentUser = user;
-        //   return cb();
-        // }, function(err) {
-        //   return cb(err);
-        // }).$promise;
-      },
-      /**Unauthenticate user
-       * @param  {Function} callback - optional
-       * @return {Promise}
-       */
-      logout: function(callback) {
-        var cb = callback || angular.noop;
-
-        $rootScope.currentUser = null;
-        return cb;
-        // return Session.delete(function() {
-        //     return cb();
-        //   },
-        //   function(err) {
-        //     return cb(err);
-        //   }).$promise;
-      },
-      /** Add createdAt, active flag and profile image
-       * @param  {Object}   user     - user info
-       * @param  {Function} callback - optional,
-       * @return {Promise}
-       */
-      createUser: function(user, callback) {
-        var cb = callback || angular.noop;
-
-        return User.save(user,
-          function(user) {
-            $rootScope.currentUser = user;
-            return cb(user);
-          },
-          function(err) {
-            return cb(err);
-          }).$promise;
+      checkUser: function(user) {
+        return User.check( {name: user.name}, function(existingUser) {
+          // var tree = Object.keys(existingUser).length;
+          // var hat = '';
+          // for (var i=0; i<tree; i++) {
+          //   hat = hat+existingUser[i];
+          // }
+          // console.log(hat);
+          if (existingUser.isActuallyNew) {
+            createUser(user);
+          } else if (existingUser.isActive) {
+            console.log('exisiting user is active');
+            return 'That name is currently being used. Please try again in a couple minutes.';
+          } else {
+            console.log('this inside part three');
+            login(existingUser);
+          }
+        }, function(err) {
+          console.log(err);
+        }).$promise;
       },
       /** Change password *
        * @param  {String}   oldPassword
        * @param  {String}   newPassword
        * @param  {Function} callback    - optional
        * @return {Promise} */
-      changePassword: function(oldPassword, newPassword, callback) {
+      changeProfile: function(oldPassword, newPassword, callback) {
         var cb = callback || angular.noop;
 
         return User.update({
@@ -81,14 +71,5 @@ angular.module('chatApp')
       currentUser: function() {
         return User.get();
       },
-
-      /** Simple check to see if a user is logged in
-       * @return {Boolean} */
-      isLoggedIn: function() {
-        if($rootScope.currentUser) {
-          return $rootScope.currentUser.role !== 'guest';
-        }
-        return false;
-      }
     };
   });

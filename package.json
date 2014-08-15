@@ -6,11 +6,8 @@
     "lodash": "~2.4.1",
     "mongoose": "~3.5.5",
     "connect-mongo": "~0.4.0",
-    "passport": "latest",
-    "passport-local": "latest",
     "ejs": "~0.8.4",
-    "socket.io": "~0.9.16",
-    "passport.socketio": "~2.2.1"
+    "socket.io": "~0.9.16"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
