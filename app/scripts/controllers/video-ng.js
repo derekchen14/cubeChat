@@ -1,15 +1,15 @@
 'use strict';
 
 angular.module('chatApp')
-  .controller('VideoCtrl', function ($scope, ChatBox) {
-    $scope.getMessages = ChatBox.getMessages;
-    $scope.getVisitors = ChatBox.getVisitors;
+  .controller('VideoCtrl', function ($scope, VideoBox) {
+    $scope.getMessages = VideoBox.getMessages;
+    $scope.getVisitors = VideoBox.getVisitors;
 
     $scope.sendMessage = function () {
       if(!$scope.newMessage) {
         return;
       }
-      ChatBox.sendMessage($scope.newMessage);
+      VideoBox.sendMessage($scope.newMessage);
       $scope.newMessage = '';
     };
   });

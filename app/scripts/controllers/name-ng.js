@@ -1,6 +1,6 @@
 'use strict';
 angular.module('chatApp')
-  .controller('NameCtrl', function ($scope, $location, Auth) {
+  .controller('NameCtrl', function ($scope, $location, $timeout, Auth) {
     $scope.user = {};
     $scope.errors = {};
 
@@ -11,7 +11,10 @@ angular.module('chatApp')
     };
     var displayWarning = function() {
       var taken = 'That name is currently being used. Please try again in a couple minutes.';
-      console.log(taken);
+      $scope.errors.mongoose = taken;
+      $timeout(function(){
+        $scope.errors.mongoose = '';
+      }, 5000);
     };
 
     $scope.isAuthorized = function() {
@@ -32,7 +35,6 @@ angular.module('chatApp')
           if (data.state === 'rejected') {
             displayWarning();
           } else {
-            console.log("Join State: ", data.state);
             sessionStorage.currentUser = $scope.user.username;
             Auth.startLeaving(true);
             $location.path('/chat');

@@ -1,8 +1,6 @@
 'use strict';
 
-/**
- * Removes server error when user updates input
- */
+/*** Removes server error when user updates input */
 angular.module('chatApp')
   .directive('mongooseError', function () {
     return {

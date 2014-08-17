@@ -1,10 +1,10 @@
 <section class="chat-app page-container">
-  <button ng-click="findHouse()">House</button>
+  <!-- <button ng-click="findHouse()">House</button> -->
   <div class="main">
     <div class="chat" ng-show="isAuthorized()">
       <section auto-scroll="event:scroll">
         <ul>
-          <li ng-repeat="message in getMessages()">
+          <li ng-repeat="message in messages">
             <div class="message">
               <span class="author" ng-class="{'me':currentUser.name == message.author.name}">{{ message.author.name }}</span>
               <span class="date">{{message.date | date: 'h:mm'}}</span>:
@@ -22,10 +22,10 @@
     <aside ng-show="isAuthorized()">
       <h3 style="text-decoration: underline;">Users</h3>
       <ul>
-        <li ng-repeat="visitor in getVisitors()">
+        <li ng-repeat="visitor in visitors" ng-class="isMe()">
           <img class="profile-img" ng-src="{{ visitor.profileImg }}">
-          <span class="name">{{ visitor.name }}</span>
-          <!-- ng-class="'me':{{currentUser.name}} == {{visitor.name}} -->
+          <span class="name" ng-class="{'me': self()===visitor.name}">
+            {{ visitor.name }}</span>
         </li>
       </ul>
     </aside>
