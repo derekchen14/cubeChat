@@ -1,11 +1,10 @@
 <section class="chat-app page-container">
-  <!-- <div ng-include="'partials/navbar'"></div> -->
+  <button ng-click="findHouse()">House</button>
   <div class="main">
-    <div class="chat">
+    <div class="chat" ng-show="isAuthorized()">
       <section auto-scroll="event:scroll">
         <ul>
           <li ng-repeat="message in getMessages()">
-            <!-- <img class="author-profile" ng-src="{{ message.author.profileImg }}"> -->
             <div class="message">
               <span class="author" ng-class="{'me':currentUser.name == message.author.name}">{{ message.author.name }}</span>
               <span class="date">{{message.date | date: 'h:mm'}}</span>:
@@ -20,14 +19,18 @@
         </form>
       </footer>
     </div>
-    <aside>
+    <aside ng-show="isAuthorized()">
       <h3 style="text-decoration: underline;">Users</h3>
       <ul>
         <li ng-repeat="visitor in getVisitors()">
-          <img class="author-profile" ng-src="{{ visitor.profileImg }}">
-          <div class="name" ng-class="{'me':currentUser.name == visitor.name}">{{ visitor.name }}</div>
+          <img class="profile-img" ng-src="{{ visitor.profileImg }}">
+          <span class="name">{{ visitor.name }}</span>
+          <!-- ng-class="'me':{{currentUser.name}} == {{visitor.name}} -->
         </li>
       </ul>
     </aside>
+    <div class="redirect" ng-hide="isAuthorized()">
+      Please <a href="/name">flip down</a> and let us know your name first.
+    </div>
   </div>
 </section>

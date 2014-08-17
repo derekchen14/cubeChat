@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chatApp')
-  .factory('ChatBox', function (MySocket, $rootScope, $timeout, $location) {
+  .factory('AudioBox', function (MySocket, $rootScope, $timeout, $location) {
     var messages = [];
     var visitors = [];
 
@@ -10,8 +10,10 @@ angular.module('chatApp')
       $timeout(function() {
         $rootScope.$broadcast('event:scroll');
       });
+      console.log($location.toString());
     };
 
+/**
     // set currentUser to socket user
     MySocket.on('init', function (data) {
       $rootScope.currentUser = data.user;
@@ -20,18 +22,11 @@ angular.module('chatApp')
     // if unauthorized, reset messages and redirect to sign-up
     MySocket.on('unauthorized', function (data) {
       messages = data.messages;
-      $location.path('/chat');
-    });
-
-    // update messages and scroll to bottom
-    MySocket.on('message', function (messageQueue) {
-      messages = messageQueue;
-      scrollToBottom();
+      $location.path('/signup');
     });
 
     // update chatroom data
     MySocket.on('join', function (data) {
-      visitors = data.visitors;
       messages = data.messages;
       scrollToBottom();
     });
@@ -47,6 +42,13 @@ angular.module('chatApp')
       }
     });
 
+    // update messages and scroll to bottom
+    MySocket.on('message', function (messageQueue) {
+      messages = messageQueue;
+      scrollToBottom();
+    });
+
+    */
     // Public API here
     return {
       getMessages: function() {

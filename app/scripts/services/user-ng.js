@@ -16,20 +16,14 @@ angular.module('chatApp')
           id:'me'
         }
       },
-      check: {
+      active: {
         method: 'GET',
-        params: {
-          name: name
-        },
-        url: '/api/check/:name'
+        url: '/api/users'
       }
 	  });
   });
 
-// 'get':    {method:'GET'}
 // 'save':   {method:'POST'}
 // 'query':  {method:'GET', isArray:true}
 // 'remove': {method:'DELETE'}
 // 'delete': {method:'DELETE'}
-
-// Current request GET /api/users?name=as+asfg

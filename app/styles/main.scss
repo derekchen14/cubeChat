@@ -1,5 +1,6 @@
 
 @import 'sass-bootstrap/lib/bootstrap';
+@import url(http://fonts.googleapis.com/css?family=Lato|Ubuntu:500|Open+Sans:400,700);
 
 @mixin clearfix() {
   &:before,
@@ -54,9 +55,20 @@ header {
   a {
     color: green;
     background: #FEFEFE;
+    display: inline-block;
+    border-radius: 0.2em;
+    padding: 1em 1.75em;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.925em;
+    transition: background-color .25s ease-in-out;
+    border: 1px solid #B3B3B3;
+    cursor: pointer;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.05);
     &:hover {
       background: #FDFD9C;
       color: green;
+      text-decoration: none;
     }
   }
   text-align: center;
@@ -73,35 +85,8 @@ header {
   0 25px 50px 0 rgba(0, 0, 0, 0.15);
   @include clearfix();
   min-height: 500px;
-  padding: 30px 45px;
+  padding: 30px 30px 30px 40px;
 }
-a {
-  position: relative;
-  display: inline-block;
-  background: none;
-  color: #000;
-  border-radius: 0.2em;
-  padding: 1em 1.75em;
-  font-weight: 700;
-  text-decoration: none;
-  font-size: 0.925em;
-  -moz-transition: background-color .25s ease-in-out;
-  -webkit-transition: background-color .25s ease-in-out;
-  -o-transition: background-color .25s ease-in-out;
-  -ms-transition: background-color .25s ease-in-out;
-  transition: background-color .25s ease-in-out;
-  border: 1px solid #B3B3B3;
-  cursor: pointer;
-  outline: 0;
-  white-space: nowrap;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.05);
-}
-
-a:hover {
-  background: #fefefe;
-  text-decoration: none;
-}
-
 input[type=submit] {
   margin: 0;
   padding: 0;
@@ -126,8 +111,10 @@ CHAT
 *******************************************************************/
 
 .chat-app {
-  .chat { width: 70%; }
-  .main { position: relative; }
+  .main { position: relative;
+    .redirect { margin: 30px 20px; }
+  }
+  .chat { width: 68%; }
   .name { float: left; }
   .me { color: #3578ee; }
 
@@ -168,15 +155,15 @@ CHAT
   }
   footer {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 15px 15px 0 0;
+    padding: 18px 18px 0 0;
 
     .new-message {
       position: relative;
       margin: 0;
       width: 100%;
-      font-size: 24px;
+      font-size: 22px;
       font-family: inherit;
-      line-height: 1.4em;
+      line-height: 1.2em;
       border: 0;
       outline: none;
       color: inherit;
@@ -205,7 +192,7 @@ CHAT
     }
   }
   aside {
-    width: 30%;
+    width: 32%;
     border-left: 1px solid #f5d6d6;
     box-shadow: inset 4px 1px 0px rgba(0, 0, 0, 0.04);
     position: absolute;
@@ -213,25 +200,33 @@ CHAT
     bottom: 0;
     right: 0;
     overflow: auto;
+    // white-space: nowrap;
     text-align: center;
     h3 {
       margin: 0.4em 0;
     }
     ul {
       padding: 0;
-      margin: 15px 0 30px 25px;
+      margin: 0 0 30px 20px;
       list-style: none;
       float: left;
     }
     li {
-      padding: 0 0 15px;
+      padding: 0 0 0.3em 0;
       @include clearfix();
     }
-    .author-profile {
+    .profile-img {
       float: left;
-      width: 48px;
-      height: 48px;
-      margin-right: 20px;
+      width: 2.5em;
+      height: 2.5em;
+      margin-right: 10px;
+    }
+    .name {
+      font-family: 'Ubuntu', sans-serif;
+      margin: 0.5em 0;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 74%;
     }
   }
 }

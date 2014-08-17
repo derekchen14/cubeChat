@@ -5,6 +5,12 @@ angular.module('chatApp')
     $scope.getMessages = ChatBox.getMessages;
     $scope.getVisitors = ChatBox.getVisitors;
 
+    $scope.findHouse = function() {
+      console.log(sessionStorage.currentUser);
+    };
+    $scope.isAuthorized = function() {
+      return (sessionStorage.currentUser !== undefined);
+    };
     $scope.sendMessage = function () {
       if(!$scope.newMessage) {
         return;

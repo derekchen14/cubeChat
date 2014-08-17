@@ -26,7 +26,7 @@
   <a href="/about" ng-hide="Cube.adjacent(about)">About</a>
   <a href="/tech" ng-hide="Cube.adjacent(tech)">Tech</a>
   <a href="/name" ng-hide="Cube.adjacent(name)">Name</a>
-  <a href="/chat" ng-hide="Cube.adjacent(chat)">Chat</a>
+  <a href="/chat" ng-hide="Cube.adjacent(chat)" ng-click="initData()">Chat</a>
   <a href="/video" ng-hide="Cube.adjacent(video)">Video</a>
 </header>
     <div ng-view=""></div>
@@ -51,19 +51,19 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/chat.js"></script>
-        <script src="scripts/controllers/name.js"></script>
-        <script src="scripts/controllers/video.js"></script>
-        <script src="scripts/controllers/navbar.js"></script>
+        <script src="scripts/controllers/chat-ng.js"></script>
+        <script src="scripts/controllers/name-ng.js"></script>
+        <script src="scripts/controllers/video-ng.js"></script>
+        <script src="scripts/controllers/navbar-ng.js"></script>
 
-        <script src="scripts/services/audiobox.js"></script>
-        <script src="scripts/services/auth.js"></script>
-        <script src="scripts/services/chatbox.js"></script>
-        <script src="scripts/services/connection.js"></script>
-        <script src="scripts/services/cube.js"></script>
-        <script src="scripts/services/socket.js"></script>
-        <script src="scripts/services/user.js"></script>
-        <script src="scripts/services/videobox.js"></script>
+        <script src="scripts/services/audiobox-ng.js"></script>
+        <script src="scripts/services/auth-ng.js"></script>
+        <script src="scripts/services/chatbox-ng.js"></script>
+        <script src="scripts/services/connection-ng.js"></script>
+        <script src="scripts/services/cube-ng.js"></script>
+        <script src="scripts/services/socket-ng.js"></script>
+        <script src="scripts/services/user-ng.js"></script>
+        <script src="scripts/services/videobox-ng.js"></script>
 
         <script src="scripts/directives/autoScroll.js"></script>
         <script src="scripts/directives/mongooseError.js"></script>
