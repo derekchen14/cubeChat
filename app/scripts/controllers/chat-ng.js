@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('chatApp')
-  .controller('ChatCtrl', function ($scope, MySocket, $rootScope, $timeout) {
+  .controller('ChatCtrl', function ($scope, MySocket, $rootScope, Auth, $timeout) {
     $scope.messages = [];
     $scope.visitors = [];
 
     $scope.isAuthorized = function() {
       return (sessionStorage.currentUser !== undefined);
     };
-    $scope.sendMessage = function() {
+    $scope.checkInput = function() {
       if(!$scope.newMessage) { return; }
       sendMessage($scope.newMessage);
       $scope.newMessage = '';
@@ -23,16 +23,22 @@ angular.module('chatApp')
       });
     };
     var sendMessage = function(message) {
-      MySocket.emit( 'message', { body: message } );
-      $scope.messages.push( { body: message, author: $rootScope.currentUser, date: Date.now() });
+      var data = {content: message, author: $scope.self(), time: Date.now()};
+      $scope.messages.push(data);
+      MySocket.emit('message', data);
       scrollToBottom();
+      Auth.startLeaving(false);
     };
 
-    MySocket.on('visitors', function (data) {
-      $scope.visitors = data.activeUsers;
+    MySocket.on('visitors', function (activeUsers) {
+      $scope.visitors = activeUsers;
     });
-    MySocket.on('message', function (messageQueue) {
-      $scope.messages = messageQueue;
+    MySocket.on('message', function (newMessage) {
+      $scope.messages.push(newMessage);
+      scrollToBottom();
+    });
+    MySocket.on('messages', function (recentMessages) {
+      $scope.messages = recentMessages;
       scrollToBottom();
     });
 

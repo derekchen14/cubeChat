@@ -6,16 +6,17 @@
         <ul>
           <li ng-repeat="message in messages">
             <div class="message">
-              <span class="author" ng-class="{'me':currentUser.name == message.author.name}">{{ message.author.name }}</span>
-              <span class="date">{{message.date | date: 'h:mm'}}</span>:
-              <span class="body">{{ message.body }}</span>
+              <span class="author" ng-class="{'me': self() == message.author}">
+                {{ message.author }}</span>
+              <span class="date">{{message.time | date: 'HH:mm'}}</span>:
+              <span class="body">{{ message.content }}</span>
             </div>
           </li>
         </ul>
       </section>
       <footer>
-        <form class="message-form" ng-submit="sendMessage()">
-          <input class="new-message" placeholder="How are you feeling ..." ng-model="newMessage" ng-trim="false" autofocus>
+        <form class="message-form" ng-submit="checkInput()">
+          <input class="new-message" ng-model="newMessage" ng-trim="false" autofocus placeholder="How are you feeling ...">
         </form>
       </footer>
     </div>
@@ -24,7 +25,7 @@
       <ul>
         <li ng-repeat="visitor in visitors" ng-class="isMe()">
           <img class="profile-img" ng-src="{{ visitor.profileImg }}">
-          <span class="name" ng-class="{'me': self()===visitor.name}">
+          <span class="name" ng-class="{'me': self() == visitor.name}">
             {{ visitor.name }}</span>
         </li>
       </ul>

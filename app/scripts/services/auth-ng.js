@@ -2,8 +2,9 @@
 
 angular.module('chatApp')
   .factory('Auth', function Auth(User, MySocket, $timeout) {
-    // var FORTY_SECONDS = 1000*40;
+    // var FOUR_SECONDS = 1000*4;
     var TEN_MINUTES = 1000*60*10;
+    var timer;
 
     var leaveUser = function() {
       if (sessionStorage.currentUser !== undefined) {
@@ -20,8 +21,7 @@ angular.module('chatApp')
         leaveUser();
       },
       startLeaving: function(firstTime) {
-        if (firstTime) { MySocket.emit('joining', "test"); }
-        var timer;
+        if (firstTime) { MySocket.emit('joining', "newUser"); }
         $timeout.cancel(timer);
         timer = $timeout(leaveUser, TEN_MINUTES);
       },
