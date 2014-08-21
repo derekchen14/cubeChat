@@ -21,7 +21,7 @@ angular.module('chatApp')
         leaveUser();
       },
       startLeaving: function(firstTime) {
-        if (firstTime) { MySocket.emit('joining', "newUser"); }
+        if (firstTime) { MySocket.reconnect(); }
         $timeout.cancel(timer);
         timer = $timeout(leaveUser, TEN_MINUTES);
       },

@@ -31,7 +31,7 @@ angular.module('chatApp')
     };
 
     MySocket.on('visitors', function (activeUsers) {
-      $scope.visitors = activeUsers;
+      if ($scope.isAuthorized()) { $scope.visitors = activeUsers; }
     });
     MySocket.on('message', function (newMessage) {
       $scope.messages.push(newMessage);
