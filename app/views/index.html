@@ -14,43 +14,35 @@
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/slidr.css">
     <style>[ng\:cloak], [ng-cloak], .ng-cloak {
       display: none !important;
     }</style>
     <!-- endbuild -->
   </head>
   <body ng-app="chatApp">
-    <h1>CubeChat</h1>
-<header ng-controller="NavbarCtrl">
-  <a href="/home" ng-hide="Cube.adjacent(home)">Home</a>
-  <a href="/about" ng-hide="Cube.adjacent(about)">About</a>
-  <a href="/tech" ng-hide="Cube.adjacent(tech)">Tech</a>
-  <a href="/name" ng-hide="Cube.adjacent(name)">Name</a>
-  <a href="/chat" ng-hide="Cube.adjacent(chat)">Chat</a>
-  <a href="/video" ng-hide="Cube.adjacent(video)">Video</a>
-</header>
-    <div ng-view=""></div>
-
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
+    <h1><a href="/">CubeChat</a></h1>
+    <div ng-view="" id="plants"></div>
 
     <script src="/socket.io/socket.io.js"></script>
     <!-- build:js(app) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="bower_components/slidr/slidr.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/home-ng.js"></script>
         <script src="scripts/controllers/chat-ng.js"></script>
         <script src="scripts/controllers/name-ng.js"></script>
         <script src="scripts/controllers/video-ng.js"></script>
@@ -67,6 +59,7 @@
         <script src="scripts/directives/autoScroll.js"></script>
         <script src="scripts/directives/mongooseError.js"></script>
         <script src="scripts/directives/historyBack.js"></script>
+
         <!-- endbuild -->
 </body>
 </html>

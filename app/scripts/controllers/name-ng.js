@@ -1,4 +1,5 @@
 'use strict';
+
 angular.module('chatApp')
   .controller('NameCtrl', function ($scope, $location, $timeout, Auth) {
     $scope.user = {};
@@ -54,5 +55,4 @@ angular.module('chatApp')
     $scope.switchUser = function() {
       Auth.switchUser();
     };
-
   });

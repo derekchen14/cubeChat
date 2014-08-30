@@ -11,20 +11,37 @@ angular.module('chatApp', [
     $routeProvider
       .when('/', {
         templateUrl: 'partials/home',
+        controller: 'HomeCtrl'
+        // resolve: {
+        //   "accommodation": function( $q, $timeout ) {
+        //     var myFriend = $q.defer();
+        //     $timeout(function(){
+        //       myFriend.resolve({
+        //         hotelName: function() {
+        //           return "My Friend's friend's hotel";
+        //         },
+        //         roomNo: function() {
+        //           return "294";
+        //         }
+        //       });
+        //     },5000);
+        //     return myFriend.promise;
+        //   }
+        // }
       })
       .when('/about', {
-        templateUrl: 'partials/about',
+        templateUrl: 'partials/about'
       })
-      .when('/tech', {
-        templateUrl: 'partials/tech',
+      .when('/chat', {
+        templateUrl: 'partials/chat',
+        controller: 'ChatCtrl'
       })
       .when('/name', {
         templateUrl: 'partials/name',
         controller: 'NameCtrl'
       })
-      .when('/chat', {
-        templateUrl: 'partials/chat',
-        controller: 'ChatCtrl'
+      .when('/tech', {
+        templateUrl: 'partials/tech'
       })
       .when('/video', {
         templateUrl: 'partials/video',
@@ -52,11 +69,14 @@ angular.module('chatApp', [
       };
     }]);
   })
-  .run(function ($rootScope, $location, Auth) {
-    // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$routeChangeStart', function (event, next) {
-      if (next.authenticate && !Auth.isLoggedIn()) {
-        $location.path('/name');
-      }
+  .run(function ($rootScope, $location, Cube) {
+/*  $rootScope.$on('$routeChangeStart', function (event, next) {
     });
+    $rootScope.$on('$routeChangeSuccess', function (event, next) {
+    });  */
+    $rootScope.$on('$viewContentLoaded', function() {
+      var cube = Cube.createSlide($location.path());
+      cube.start();
+    });
+
   });

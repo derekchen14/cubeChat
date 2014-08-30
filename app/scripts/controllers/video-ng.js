@@ -2,8 +2,8 @@
 
 angular.module('chatApp')
   .controller('VideoCtrl', function ($scope, VideoBox) {
-    $scope.getMessages = VideoBox.getMessages;
-    $scope.getVisitors = VideoBox.getVisitors;
+    // $scope.getMessages = VideoBox.getMessages;
+    // $scope.getVisitors = VideoBox.getVisitors;
 
     $scope.sendMessage = function () {
       if(!$scope.newMessage) {

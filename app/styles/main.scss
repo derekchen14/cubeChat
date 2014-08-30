@@ -24,8 +24,7 @@ body {
   line-height: 1.4em;
   background: #E9DAF5;
   color: #4d4d4d;
-  width: 750px;
-  margin: 0 auto;
+  // width: 750px;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   -ms-font-smoothing: antialiased;
@@ -35,14 +34,21 @@ body {
 
 h1 {
   width: 100%;
-  font-size: 70px;
-  font-weight: bold;
+  // font-size: 70px;
   text-align: center;
-  color: #18E939;
-  color: yellow;
   text-shadow: -1px -1px rgba(243, 157, 3, 0.95);
   text-rendering: optimizeLegibility;
-  margin-top: 20px;
+  margin: 14px 0 12px 0;
+  > a {
+    color: yellow;
+    font-weight: bold;
+    transition: color .25s ease-in-out;
+    &:hover {
+      color: #2CFA07;
+      text-decoration: none;
+      text-shadow: -1px -1px #2EB516;
+    }
+  }
 }
 h3 {
   text-decoration: underline;
@@ -57,7 +63,7 @@ header {
     background: #FEFEFE;
     display: inline-block;
     border-radius: 0.2em;
-    padding: 1em 1.75em;
+    padding: 0.5em 1.25em;
     font-weight: 700;
     text-decoration: none;
     font-size: 0.925em;
@@ -65,6 +71,7 @@ header {
     border: 1px solid #B3B3B3;
     cursor: pointer;
     box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.05);
+    margin: 0 5px;
     &:hover {
       background: #FDFD9C;
       color: green;
@@ -73,18 +80,19 @@ header {
   }
   text-align: center;
 }
+
 .page-container {
+  height: 600px;
+  width: 600px;
   background: #fff;
   background: rgba(255, 255, 255, 0.9);
-  margin: 10px 0;
+  margin: 0px auto;
   border: 1px solid #ccc;
   position: relative;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
+  border-radius: 2px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2),
   0 25px 50px 0 rgba(0, 0, 0, 0.15);
   @include clearfix();
-  min-height: 500px;
   padding: 30px 30px 30px 40px;
 }
 input[type=submit] {
@@ -252,9 +260,9 @@ STATIC
 }
 .centerpiece {
   text-align: center;
-  padding-bottom: 3%;
+  padding-bottom: 5%;
   .plant {
-    width: 75%;
+    width: 90%;
   }
 }
 

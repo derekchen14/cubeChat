@@ -1,5 +1,5 @@
-<section class="chat-app page-container">
-  <!-- <button ng-click="findHouse()">House</button> -->
+<div id="chat" class="plants">
+<section class="chat-app page-container" data-slidr="left">
   <div class="main">
     <div class="chat" ng-show="isAuthorized()">
       <section auto-scroll="event:scroll">
@@ -35,3 +35,66 @@
     </div>
   </div>
 </section>
+
+
+<!-- About -->
+<section class="page-container" data-slidr="back">
+  <div class="main"><div class="static">
+    <h3>About Us</h3>
+    <p>Etiam facilisis dapibus lorem at aliquet. Curabitur sodales, ante nec convallis molestie, justo odio ultricies sem, sed fermentum risus lacus elementum ante. Aliquam feugiat suscipit orci, sed pretium magna rutrum eu. Vestibulum interdum, mi at lacinia vehicula, nec pharetra diam lorem vitae nisl. Vestibulum rhoncus nisl in nibh tincidunt eleifend. Quisque at condimentum velit, ornare rhoncus risus.  Work hard to make it all happen.</p>
+    <p> Neutra Pitchfork, pickled Portland chambray paleo. Craft beer 3 wolf moon Pitchfork hoodie. Authentic chia bicycle rights, ethnic street art Thundercats Banksy freegan art party kale chips. Mustache messenger bag crucifix art Intelligentsia sartorial Blue Bottle Odd Future cred gastropub post-ironic. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae, mauris vel feugiat mollis, ligula tortor mollis orci, a congue orci erat non erat.</p>
+    <p>Mixtape asymmetrical Neutra, leggings authentic VHS cray mumblecore. Blue Bottle butcher farm-to-table. Hella biodiesel +1 Carles, bespoke twee brunch hoodie cardigan Selfies paleo. Literally gluten-free authentic beard, hoodie fashion axe skateboard brunch typewriter street art. Retro, viral American Apparel hella organic ennui. Marfa vegan American Apparel salvia Pinterest. Butcher you probably haven't heard of them plaid PBR.</p>
+  </div></div>
+</section>
+<!-- Home -->
+<section class="page-container" data-slidr="front">
+  <div class="main"><div class="static">
+    <h3>Welcome!</h3>
+    <div class="centerpiece">
+      <img src="images/plant.png" alt="plant" class="plant">
+    </div>
+    <p>CubeChat is a modern web app used to connect with friends.  To get started, just <a href="/name">flip the cube </a> down by clicking on the arrow below!</p>
+  </div></div>
+</section>
+<!-- Name -->
+<section class="page-container" data-slidr="bottom">
+  <div class="main"><div class="row" ng-hide="isAuthorized()">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <h3>Hi, what is your name?</h3>
+      <form class="form" name="go">
+        <div class="form-group">
+          <input type="text" name="who" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary"> Enter </button>
+      </form>
+    </div>
+    <div class="col-sm-1"></div>
+  </div></div>
+  <div class="switch" ng-show="isAuthorized()">
+    <button ng-click="switchUser()">Switch User</button>
+  </div>
+</section>
+<!-- Tech -->
+<section class="page-container" data-slidr="top">
+  <!-- <div ng-include="'partials/navbar'"></div> -->
+  <div class="main"><div class="static">
+    <h3>Technologies Used</h3>
+    <p><i>Front-end:</i> As a modern web app, the lines where one library ends and another framework begins really start to blur.  Here is one possible breakdown.</p>
+    <ul class="tech">
+      <li><b>AngularJS</b> - By providing context for our data model, the controller allows us to establish data-binding between the model and the view</li>
+      <li><b>HTML5</b> - We connected the dots between the presentation, data, and logic components as follows Web Audio API.  This also includes the Video API.</li>
+      <li><b>CSS3</b> - There are things like alphatransparency, border radius and semantic changes.  Also, I declared the Doctype as HTML 5, so yea.</li>
+    </ul>
+
+    <p><i>Back-End:</i> Vestibulum rhoncus nisl in nibh tincidunt eleifend. Quisque at condimentum velit, ornare rhoncus risus.  Work hard to make it all happen.</p>
+    <ul class="tech">
+      <li><b>NodeJS</b> - A scope can be seen as the glue which allows the template, model and controller to work together.</li>
+      <li><b>Websockets</b> - To dynamically generate links that will in the future lead to phone detail pages, we used the brace binding in the href attribute values.</li>
+      <li><b>WebRTC</b> - Using STUN, TURN and ICE for NAT Traversal, we go through different firewalls to establish a P2P connection.</li>
+      <li><b>MongoDB</b> - Document store NoSQL database used for fast reads, makes the old way of doing things obsolete. Like furrealz.</li>
+    </ul>
+  </div></div>
+</section>
+
+</div>
