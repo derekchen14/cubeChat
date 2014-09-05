@@ -4,6 +4,7 @@ angular.module('chatApp')
   .controller('NameCtrl', function ($scope, $location, $timeout, Auth) {
     $scope.user = {};
     $scope.errors = {};
+    $scope.userType = '';
 
     var generateImg = function() {
       var rand = Math.floor(Math.random()*4);
@@ -17,6 +18,21 @@ angular.module('chatApp')
         $scope.errors.mongoose = '';
       }, 5000);
     };
+    var enterUser = function() {
+      sessionStorage.currentUser = $scope.user.username;
+      $timeout(function() {
+        $scope.$parent.flip('chat');
+        // $location.path('/chat');
+        Auth.startLeaving(true);
+        clearUserDetails();
+      }, 2400);
+    };
+    var clearUserDetails = function() {
+      $timeout(function(){
+        $scope.userType = '';
+        $scope.user.username = '';
+      }, 1000);
+    };
 
     $scope.isAuthorized = function() {
       return (sessionStorage.currentUser !== undefined);
@@ -26,6 +42,7 @@ angular.module('chatApp')
       $scope.user.profileImg = generateImg();
 
       if(form.$valid) {
+        console.log('name: ', $scope.user.username);
         Auth.joinUser({
           name: $scope.user.username,
           profileImg: $scope.user.profileImg,
@@ -35,10 +52,12 @@ angular.module('chatApp')
         .then( function(data) {
           if (data.state === 'rejected') {
             displayWarning();
-          } else {
-            sessionStorage.currentUser = $scope.user.username;
-            Auth.startLeaving(true);
-            $location.path('/chat');
+          } else if (data.state === 'entered') {
+            $scope.userType = 'returningUser';
+            enterUser();
+          } else if (data.state === 'created') {
+            $scope.userType = 'newUser';
+            enterUser();
           }
         })
         .catch( function(err) {

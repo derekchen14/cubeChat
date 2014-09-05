@@ -1,5 +1,5 @@
-
 @import 'sass-bootstrap/lib/bootstrap';
+@import url(http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css);
 @import url(http://fonts.googleapis.com/css?family=Lato|Ubuntu:500|Open+Sans:400,700);
 
 @mixin clearfix() {
@@ -24,7 +24,6 @@ body {
   line-height: 1.4em;
   background: #E9DAF5;
   color: #4d4d4d;
-  // width: 750px;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   -ms-font-smoothing: antialiased;
@@ -95,20 +94,20 @@ header {
   @include clearfix();
   padding: 30px 30px 30px 40px;
 }
-input[type=submit] {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  font-size: 100%;
-  vertical-align: baseline;
-  font-family: inherit;
-  color: inherit;
-  -webkit-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-}
+// input[type=submit] {
+//   margin: 0;
+//   padding: 0;
+//   border: 3px solid red;
+//   background: none;
+//   font-size: 100%;
+//   vertical-align: baseline;
+//   font-family: inherit;
+//   color: inherit;
+//   -webkit-appearance: none;
+//   -ms-appearance: none;
+//   -o-appearance: none;
+//   appearance: none;
+// }
 
 .btn-primary {
   margin-bottom: 5px;
@@ -122,13 +121,13 @@ CHAT
   .main { position: relative;
     .redirect { margin: 30px 20px; }
   }
-  .chat { width: 68%; }
+  .chat { width: 98%; }
   .name { float: left; }
   .me { color: #6611D3; }
 
   section {
     padding: 15px 15px 0 0;
-    height: 380px;
+    height: 470px;
     overflow: auto;
 
     ul {
@@ -163,13 +162,13 @@ CHAT
     }
   }
   footer {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 18px 18px 0 0;
+    border-top: 1px solid #D1DCD1;
+    padding-top: 18px;
 
     .new-message {
       position: relative;
       margin: 0;
-      width: 100%;
+      width: 80%;
       font-size: 22px;
       font-family: inherit;
       line-height: 1.2em;
@@ -189,28 +188,37 @@ CHAT
       -o-font-smoothing: antialiased;
       font-smoothing: antialiased;
     }
-    .send-message {
-      line-height: 1.4em;
-      padding: 6px;
-      border: 1px solid #999;
-      box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
-      -moz-box-sizing: border-box;
-      -ms-box-sizing: border-box;
-      -o-box-sizing: border-box;
-      box-sizing: border-box;
+    .send {
+      margin: 0 4px 7px 20px;
+      padding: 10px 14px;
+      font: 16px "Ubuntu", Helvetica, Arial, sans-serif;
+      letter-spacing: 1.4px;
+      // color: white;
+      // background-color: #5cb85c;
+      // border-color: #4cae4c;
+      // &:hover {
+      //   background-color: #47a447;
+      //   border-color:
+      // }
     }
+
   }
   aside {
-    width: 32%;
-    border-left: 1px solid #f5d6d6;
-    box-shadow: inset 4px 1px 0px rgba(0, 0, 0, 0.04);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    overflow: auto;
-    // white-space: nowrap;
-    text-align: center;
+    width: 50%;
+    .userList {
+      border-left: 1px solid #f5d6d6;
+      box-shadow: inset 4px 1px 0px rgba(0, 0, 0, 0.04);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      overflow: auto;
+      // white-space: nowrap;
+      text-align: center;
+      background-color: white;
+      border-top-left-radius: 14px;
+      border-bottom-left-radius: 14px;
+    }
     h3 {
       margin: 0.4em 0;
     }
@@ -237,14 +245,39 @@ CHAT
       white-space: nowrap;
       max-width: 74%;
     }
+    .userTab {
+      border: 2px solid #E7DDE7;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-right: none;
+      background-color: white;
+      position: absolute;
+      padding: 10px 12px;
+      display: inline;
+      cursor: pointer;
+      bottom: 100px;
+      right: 0px;
+      &:hover {
+        color: green;
+      }
+    }
+    .userTab.open {
+      right: 196px;
+    }
+
   }
 }
 
 /*******************************************************************
-VIDEO
+NAME
 *******************************************************************/
-.video {
-  // something;
+.switch {
+  text-align: center;
+  button { margin: 100px; }
+}
+h2 {
+  font: 16px 'Lato', Helvetica, Arial, sans-serif;
+  color: #6611D3;
 }
 
 /*******************************************************************
@@ -265,4 +298,3 @@ STATIC
     width: 90%;
   }
 }
-

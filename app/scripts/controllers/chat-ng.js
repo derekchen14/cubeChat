@@ -4,14 +4,19 @@ angular.module('chatApp')
   .controller('ChatCtrl', function ($scope, MySocket, $rootScope, Auth, $timeout) {
     $scope.messages = [];
     $scope.visitors = [];
+    $scope.chat = {};
+    $scope.listOpened = false;
 
     $scope.isAuthorized = function() {
       return (sessionStorage.currentUser !== undefined);
     };
+    $scope.showUserList = function() {
+      $scope.listOpened = !$scope.listOpened;
+    };
     $scope.checkInput = function() {
-      if(!$scope.newMessage) { return; }
-      sendMessage($scope.newMessage);
-      $scope.newMessage = '';
+      if(!$scope.chat.newMessage) { return; }
+      sendMessage($scope.chat.newMessage);
+      $scope.chat.newMessage = '';
     };
     $scope.self = function() {
       return sessionStorage.currentUser;

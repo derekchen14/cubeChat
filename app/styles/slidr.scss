@@ -1,62 +1,27 @@
-.plants {
-	// color: white;
-	// text-align: center;
+#plants {
   margin: 0 auto;
-	// overflow: visible;
-	> div {	border-radius: 3px; }
+  > div { border-radius: 3px; }
 }
 
 h2 {
-	font-size: 3em;
-	left: 110px;
-	margin-top: 150px;
+  font-size: 3em;
+  left: 110px;
+  margin-top: 150px;
 }
 
-.apple {
-	background-color: #45D927;
-	min-width: 400px;
-	min-height: 400px;
-}
-.pear	{
-  background-color: #BB27D9;
- 	min-width: 400px;
-	min-height: 400px;
- }
-.coconut {
-  background-color: #27A7D9;
- 	min-width: 400px;
-	min-height: 400px;
- }
-.guava {
-  background-color: #D92783;
- 	min-width: 400px;
-	min-height: 400px;
- }
-.banana {
-	background-color: #D9C127;
-	min-width: 400px;
-	min-height: 400px;
- }
-.mango {
-  background-color: #D96E27;
- 	min-width: 400px;
-	min-height: 400px;
- }
-
-aside[id="about-control"] .slidr-control,
-aside[id="chat-control"] .slidr-control,
-aside[id="home-control"] .slidr-control,
-aside[id="name-control"] .slidr-control,
-aside[id="tech-control"] .slidr-control,
-aside[id="video-control"] .slidr-control, {
+aside[id="plants-control"] .slidr-control {
   opacity: 0.4;
+  &:hover { opacity: 1; }
 }
-
-aside[id="about-control"] .slidr-control:hover,
-aside[id="chat-control"] .slidr-control:hover,
-aside[id="home-control"] .slidr-control:hover,
-aside[id="name-control"] .slidr-control:hover,
-aside[id="tech-control"] .slidr-control:hover,
-aside[id="video-control"] .slidr-control:hover {
-  opacity: 1;
+aside[id="plants-control"] .slidr-control.right:active:after {
+  border-left-color: #5CB85C !important;
+}
+aside[id="plants-control"] .slidr-control.left:active:after {
+  border-right-color: #5CB85C !important;
+}
+aside[id="plants-control"] .slidr-control.up:active:after {
+  border-bottom-color: #5CB85C !important;
+}
+aside[id="plants-control"] .slidr-control.down:active:after {
+  border-top-color: #5CB85C !important;
 }

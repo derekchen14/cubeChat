@@ -5,49 +5,20 @@ angular.module('chatApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
+  'ngAnimate',
   'btford.socket-io'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'partials/home',
-        controller: 'HomeCtrl'
-        // resolve: {
-        //   "accommodation": function( $q, $timeout ) {
-        //     var myFriend = $q.defer();
-        //     $timeout(function(){
-        //       myFriend.resolve({
-        //         hotelName: function() {
-        //           return "My Friend's friend's hotel";
-        //         },
-        //         roomNo: function() {
-        //           return "294";
-        //         }
-        //       });
-        //     },5000);
-        //     return myFriend.promise;
-        //   }
-        // }
+        templateUrl: 'partials/main',
+        controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'partials/about'
-      })
-      .when('/chat', {
-        templateUrl: 'partials/chat',
-        controller: 'ChatCtrl'
-      })
-      .when('/name', {
-        templateUrl: 'partials/name',
-        controller: 'NameCtrl'
-      })
-      .when('/tech', {
-        templateUrl: 'partials/tech'
-      })
-      .when('/video', {
-        templateUrl: 'partials/video',
-        controller: 'VideoCtrl',
-        // authenticate: true
-      })
+      // .when('/chat', {
+      //   templateUrl: 'partials/chat',
+      //   controller: 'ChatCtrl'
+      //   authenticate: true
+      // })
       .otherwise({
         redirectTo: '/'
       });
@@ -68,15 +39,14 @@ angular.module('chatApp', [
         }
       };
     }]);
-  })
+  });
+/*
   .run(function ($rootScope, $location, Cube) {
-/*  $rootScope.$on('$routeChangeStart', function (event, next) {
+  $rootScope.$on('$routeChangeStart', function (event, next) {
     });
     $rootScope.$on('$routeChangeSuccess', function (event, next) {
-    });  */
-    $rootScope.$on('$viewContentLoaded', function() {
-      var cube = Cube.createSlide($location.path());
-      cube.start();
     });
-
+    $rootScope.$on('$viewContentLoaded', function() {
+    });
   });
+*/

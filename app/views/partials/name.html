@@ -1,75 +1,32 @@
-<div id="name" class="plants">
-<section class="page-container" data-slidr="bottom">
-  <div class="main"><div class="row" ng-hide="isAuthorized()">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-10">
-      <h3>Hi, what is your name?</h3>
-      <form class="form" name="go" ng-submit="register(go)" novalidate>
+<div class="main"><div class="row" ng-hide="isAuthorized()">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <h3>Hi, what is your name?</h3>
+    <form class="form" name="go" ng-submit="register(go)" novalidate>
 
-        <div class="form-group">
-          <input type="text" name="who" class="form-control" ng-minlength="3" ng-model="user.username"  ng-pattern="/^[a-zA-Z ]+$/"  autofocus mongoose-error required>
-        </div>
+      <div class="form-group">
+        <input type="text" name="who" class="form-control" ng-minlength="3" ng-model="user.username" ng-pattern="/^[a-zA-Z ]+$/"  autofocus mongoose-error required>
+      </div>
 
-        <div class="form-group has-error">
-          <p class="help-block" ng-show="go.who.$error.pattern && submitted">
-             No need to get fancy, we just want your name.</p>
-          <p class="help-block" ng-show="go.who.$error.required && submitted">
-            A username is needed, your first and last name will do.</p>
-          <p class="help-block" ng-show="go.who.$error.minlength && submitted">
-            Is your name that short? Please include your last name.</p>
-          <p class="help-block" ng-show="submitted">{{ errors.mongoose }}</p>
-        </div>
+      <div class="form-group has-error">
+        <p class="help-block" ng-show="go.who.$error.pattern && submitted">
+           No need to get fancy, we just want your name.</p>
+        <p class="help-block" ng-show="go.who.$error.required && submitted">
+          A username is needed, your first and last name will do.</p>
+        <p class="help-block" ng-show="go.who.$error.minlength && submitted">
+          Is your name that short? Please include your last name.</p>
+        <p class="help-block" ng-show="submitted">{{ errors.mongoose }}</p>
+      </div>
 
-        <button type="submit" class="btn btn-lg btn-primary"> Enter </button>
-      </form>
-    </div>
-    <div class="col-sm-1"></div>
-  </div></div>
-  <div class="switch" ng-show="isAuthorized()">
-    <button ng-click="switchUser()">Switch User</button>
+      <button type="submit" class="btn btn-lg btn-primary"> Enter </button>
+    </form>
   </div>
-</section>
-
-<!-- About -->
-<section class="page-container" data-slidr="back">
-  <div class="main"><div class="static">
-    <h3>About Us</h3>
-    <p>Etiam facilisis dapibus lorem at aliquet. Curabitur sodales, ante nec convallis molestie, justo odio ultricies sem, sed fermentum risus lacus elementum ante. Aliquam feugiat suscipit orci, sed pretium magna rutrum eu. Vestibulum interdum, mi at lacinia vehicula, nec pharetra diam lorem vitae nisl. Vestibulum rhoncus nisl in nibh tincidunt eleifend. Quisque at condimentum velit, ornare rhoncus risus.  Work hard to make it all happen.</p>
-    <p> Neutra Pitchfork, pickled Portland chambray paleo. Craft beer 3 wolf moon Pitchfork hoodie. Authentic chia bicycle rights, ethnic street art Thundercats Banksy freegan art party kale chips. Mustache messenger bag crucifix art Intelligentsia sartorial Blue Bottle Odd Future cred gastropub post-ironic. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae, mauris vel feugiat mollis, ligula tortor mollis orci, a congue orci erat non erat.</p>
-    <p>Mixtape asymmetrical Neutra, leggings authentic VHS cray mumblecore. Blue Bottle butcher farm-to-table. Hella biodiesel +1 Carles, bespoke twee brunch hoodie cardigan Selfies paleo. Literally gluten-free authentic beard, hoodie fashion axe skateboard brunch typewriter street art. Retro, viral American Apparel hella organic ennui. Marfa vegan American Apparel salvia Pinterest. Butcher you probably haven't heard of them plaid PBR.</p>
-  </div></div>
-</section>
-<!-- Chat -->
-<section class="chat-app page-container" data-slidr="left">
-  <div class="main">
-    <div class="chat"> <!-- ng-show="isAuthorized()" -->
-      <section auto-scroll="event:scroll"></section>
-      <footer>
-        <form class="message-form" ng-submit="checkInput()">
-          <input class="new-message" ng-model="newMessage" ng-trim="false" autofocus placeholder="How are you feeling ...">
-        </form>
-      </footer>
-    </div>
-    <aside ng-show="isAuthorized()">
-      <h3 style="text-decoration: underline;">Users</h3>
-    </aside>
+  <div class="col-sm-1"></div>
+</div></div>
+<div class="switch" ng-show="isAuthorized()">
+  <div ng-switch on="userType">
+    <h2 ng-switch-when="returningUser">Hey {{user.username | trim}}, great to see you again!</h2>
+    <h2 ng-switch-when="newUser">Welcome to CubeChat!</h2>
+    <button ng-switch-default ng-click="switchUser()" class="btn btn-lg btn-warning">Switch User</button>
   </div>
-</section>
-<!-- Home -->
-<section class="page-container" data-slidr="front">
-  <div class="main"><div class="static">
-    <h3>Welcome!</h3>
-    <div class="centerpiece">
-    <img src="images/plant.png" alt="plant" class="plant">
-    </div>
-    <p>CubeChat is a modern web app used to connect with friends.  To get started, just <a href="/name">flip the cube </a> down by clicking on the arrow below!</p>
-  </div></div>
-</section>
-<!-- Video -->
-<section class="page-container" data-slidr="right">
-  <div class="main"><div class="static">
-    <h3>Video Chat</h3>
-    <p>Coming soon ...</p>
-  </div></div>
-</section>
 </div>

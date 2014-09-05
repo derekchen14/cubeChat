@@ -1,76 +1,9 @@
-<div id="home" class="plants">
-<section class="page-container" data-slidr="front">
+<!-- <section class="page-container" data-slidr="front"> -->
   <div class="main"><div class="static">
     <h3>Welcome!</h3>
     <div class="centerpiece">
       <img src="images/plant.png" alt="plant" class="plant">
     </div>
-    <p>CubeChat is a modern web app used to connect with friends.  To get started, just <a href="/name">flip the cube </a> down by clicking on the arrow below!</p>
+    <p>CubeChat is a modern web app used to connect with friends.  To get started, just <a href="/" ng-click="flip('down')">flip the cube </a> down by clicking on the arrow below!</p>
   </div></div>
-</section>
-
-
-<!-- Chat -->
-<section class="chat-app page-container" data-slidr="left">
-  <div class="main">
-    <div class="chat"> <!-- ng-show="isAuthorized()" -->
-      <section auto-scroll="event:scroll"></section>
-      <footer>
-        <form class="message-form" ng-submit="checkInput()">
-          <input class="new-message" ng-model="newMessage" ng-trim="false" autofocus placeholder="How are you feeling ...">
-        </form>
-      </footer>
-    </div>
-    <aside ng-show="isAuthorized()">
-      <h3 style="text-decoration: underline;">Users</h3>
-    </aside>
-  </div>
-</section>
-<!-- Name -->
-<section class="page-container" data-slidr="bottom">
-  <div class="main"><div class="row" ng-hide="isAuthorized()">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-10">
-      <h3>Hi, what is your name?</h3>
-      <form class="form" name="go">
-        <div class="form-group">
-          <input type="text" name="who" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-lg btn-primary"> Enter </button>
-      </form>
-    </div>
-    <div class="col-sm-1"></div>
-  </div></div>
-  <div class="switch" ng-show="isAuthorized()">
-    <button ng-click="switchUser()">Switch User</button>
-  </div>
-</section>
-<!-- Tech -->
-<section class="page-container" data-slidr="top">
-  <!-- <div ng-include="'partials/navbar'"></div> -->
-  <div class="main"><div class="static">
-    <h3>Technologies Used</h3>
-    <p><i>Front-end:</i> As a modern web app, the lines where one library ends and another framework begins really start to blur.  Here is one possible breakdown.</p>
-    <ul class="tech">
-      <li><b>AngularJS</b> - By providing context for our data model, the controller allows us to establish data-binding between the model and the view</li>
-      <li><b>HTML5</b> - We connected the dots between the presentation, data, and logic components as follows Web Audio API.  This also includes the Video API.</li>
-      <li><b>CSS3</b> - There are things like alphatransparency, border radius and semantic changes.  Also, I declared the Doctype as HTML 5, so yea.</li>
-    </ul>
-
-    <p><i>Back-End:</i> Vestibulum rhoncus nisl in nibh tincidunt eleifend. Quisque at condimentum velit, ornare rhoncus risus.  Work hard to make it all happen.</p>
-    <ul class="tech">
-      <li><b>NodeJS</b> - A scope can be seen as the glue which allows the template, model and controller to work together.</li>
-      <li><b>Websockets</b> - To dynamically generate links that will in the future lead to phone detail pages, we used the brace binding in the href attribute values.</li>
-      <li><b>WebRTC</b> - Using STUN, TURN and ICE for NAT Traversal, we go through different firewalls to establish a P2P connection.</li>
-      <li><b>MongoDB</b> - Document store NoSQL database used for fast reads, makes the old way of doing things obsolete. Like furrealz.</li>
-    </ul>
-  </div></div>
-</section>
-<!-- Video -->
-<section class="page-container" data-slidr="right">
-  <div class="main"><div class="static">
-    <h3>Video Chat</h3>
-    <p>Coming soon ...</p>
-  </div></div>
-</section>
-</div>
+<!-- </section> -->
