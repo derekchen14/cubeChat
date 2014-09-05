@@ -4,6 +4,7 @@ var slidr;
 angular.module('chatApp')
   .controller('MainCtrl', function ($scope, $timeout) {
     var s;
+    $scope.ready = false;
 
     var changeControls = function(e) {
       var direction = 'Horizontal';
@@ -192,13 +193,11 @@ angular.module('chatApp')
 
     $timeout( function() {
       s = slidr.create('plants', settings);
-      // calling $scope.apply will conflict with existing digest loop
-      $timeout ( function() {
-        s.add('h', ['home', 'video', 'about', 'chat', 'home'], 'cube', true);
-        s.add('v', ['home', 'name', 'about', 'tech', 'home'], 'cube', true);
-        s.start();
-      }, 0);
-    }, 0);
+      s.add('h', ['home', 'video', 'about', 'chat', 'home'], 'cube', true);
+      s.add('v', ['home', 'name', 'about', 'tech', 'home'], 'cube', true);
+      s.start();
+      $scope.ready = true;
+    }, 500);
 
     $scope.flip = function(side) {
       s.slide(side);
