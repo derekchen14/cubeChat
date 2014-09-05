@@ -1,5 +1,4 @@
 @import 'sass-bootstrap/lib/bootstrap';
-@import url(http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css);
 @import url(http://fonts.googleapis.com/css?family=Lato|Ubuntu:500|Open+Sans:400,700);
 
 @mixin clearfix() {
@@ -33,7 +32,6 @@ body {
 
 h1 {
   width: 100%;
-  // font-size: 70px;
   text-align: center;
   text-shadow: -1px -1px rgba(243, 157, 3, 0.95);
   text-rendering: optimizeLegibility;
