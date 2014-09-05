@@ -195,7 +195,7 @@ angular.module('chatApp')
       s.add('h', ['home', 'video', 'about', 'chat', 'home'], 'cube', true);
       s.add('v', ['home', 'name', 'about', 'tech', 'home'], 'cube', true);
       s.start();
-    }, 90); // Unsure why a pure timeout is insufficient
+    }, 100); // Unsure why a pure timeout is insufficient
 
     $scope.flip = function(side) {
       s.slide(side);

@@ -20,7 +20,7 @@
     </footer>
   </div>
   <aside ng-show="isAuthorized()">
-    <div class="userList" ng-show="listOpened">
+    <div class="userList" ng-class="{ open:listOpened }">
       <h3 style="text-decoration: underline;">Users</h3>
       <ul>
         <li ng-repeat="visitor in visitors" ng-class="isMe()">
