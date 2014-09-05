@@ -192,10 +192,13 @@ angular.module('chatApp')
 
     $timeout( function() {
       s = slidr.create('plants', settings);
-      s.add('h', ['home', 'video', 'about', 'chat', 'home'], 'cube', true);
-      s.add('v', ['home', 'name', 'about', 'tech', 'home'], 'cube', true);
-      s.start();
-    }, 90); // Unsure why a pure timeout is insufficient
+      // calling $scope.apply will conflict with existing digest loop
+      $timeout ( function() {
+        s.add('h', ['home', 'video', 'about', 'chat', 'home'], 'cube', true);
+        s.add('v', ['home', 'name', 'about', 'tech', 'home'], 'cube', true);
+        s.start();
+      }, 0);
+    }, 0);
 
     $scope.flip = function(side) {
       s.slide(side);
